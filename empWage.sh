@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 isFullTime=1;
 isPartTime=2;
 totalSalary=0;
