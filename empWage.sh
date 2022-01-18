@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -x 
 
 isFullTime=1;
 isPartTime=2;
@@ -29,13 +29,14 @@ function getEmpWagePerDay(){
 }
 while [[ $totalEmpHrs -lt $maxWorkingHrs && $totalWorkingDays -le $maxWorkingDays ]]
 do
-   ((totalWorkingDays++))
+  ((totalWorkingDays++))
 	empCheck=$((RANDOM%3));
 	empHrs=$( getWorkingHrs $empCheck )
 	totalEmpHrs=$(($totalEmpHrs+$empHrs))
 	dailyWage[$totalWorkingDays]=$( getEmpWagePerDay $empHrs)
 done
 
-totalSalary=$(($totalEmpHrs * $empRatePerHrs))
-echo $totalSalary
-echo ${dailyWage[@]}
+  totalSalary=$(($totalEmpHrs*$empRatePerHrs));
+  echo $totalSalary
+  echo ${dailyWage[@]}
+
