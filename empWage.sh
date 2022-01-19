@@ -1,4 +1,4 @@
-#!/bin/bash -x 
+#!/bin/bash -x
 
 isFullTime=1;
 isPartTime=2;
@@ -8,6 +8,7 @@ maxWorkingDays=20;
 maxWorkingHrs=100;
 totalEmpHrs=0;
 totalWorkingDays=0;
+declare -A dailywage
 
 function getWorkingHrs(){
 	case $1 in
@@ -33,10 +34,11 @@ do
 	empCheck=$((RANDOM%3));
 	empHrs=$( getWorkingHrs $empCheck )
 	totalEmpHrs=$(($totalEmpHrs+$empHrs))
-	dailyWage[$totalWorkingDays]=$( getEmpWagePerDay $empHrs)
+	dailywage["Day "$totalWorkingDays]=$( getEmpWagePerDay $empHrs)
 done
 
   totalSalary=$(($totalEmpHrs*$empRatePerHrs));
   echo $totalSalary
-  echo ${dailyWage[@]}
+  echo ${!dailywage[@]}
+  echo ${dailywage[@]}
 
